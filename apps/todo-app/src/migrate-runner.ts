@@ -14,7 +14,7 @@ migrate(connectionString, models, {
     console.log("✅ Schema created/verified for models:", Object.keys(models).join(", "));
     process.exit(0);
   })
-  .catch((err) => {
+  .catch((err: unknown) => {
     console.error("❌ Migration failed:", err);
     process.exit(1);
   });
