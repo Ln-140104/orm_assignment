@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Todo — powered by light-orm</title>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <main class="app">
+      <header class="app__header">
+        <h1>Todo</h1>
+        <p class="app__subtitle">
+          Backed by <code>@lakku/light-orm</code> — a type-safe ORM for serverless Postgres
+        </p>
+      </header>
+
+      <form id="create-form" class="create-form">
+        <input
+          id="title-input"
+          type="text"
+          placeholder="What needs doing?"
+          autocomplete="off"
+          required
+        />
+        <button type="submit">Add</button>
+      </form>
+
+      <div class="filters" role="tablist">
+        <button class="filter" data-filter="all" aria-selected="true">All</button>
+        <button class="filter" data-filter="active" aria-selected="false">Active</button>
+        <button class="filter" data-filter="completed" aria-selected="false">Completed</button>
+      </div>
+
+      <ul id="todo-list" class="todo-list"></ul>
+
+      <footer class="app__footer">
+        <span id="stats">–</span>
+      </footer>
+    </main>
+
+    <script src="/app.js" type="module"></script>
+  </body>
+</html>

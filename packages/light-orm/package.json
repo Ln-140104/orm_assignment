@@ -1,0 +1,31 @@
+{
+  "name": "@lakku/light-orm",
+  "version": "0.1.0",
+  "description": "A tiny, type-safe TypeScript ORM built for serverless Postgres (Neon, Supabase, etc.)",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "dev": "tsc -p tsconfig.json --watch",
+    "typecheck": "tsc -p tsconfig.json --noEmit"
+  },
+  "keywords": ["orm", "typescript", "postgres", "serverless", "neon", "supabase"],
+  "license": "MIT",
+  "dependencies": {
+    "postgres": "^3.4.5"
+  },
+  "devDependencies": {
+    "typescript": "^5.6.3",
+    "@types/node": "^22.9.0"
+  }
+}

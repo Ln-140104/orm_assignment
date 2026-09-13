@@ -1,0 +1,23 @@
+{
+  "name": "orm-assignment",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Lightweight, type-safe TypeScript ORM for serverless Postgres, plus an example Todo app.",
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
+  "scripts": {
+    "build": "npm run build --workspace=packages/light-orm && npm run build --workspace=apps/todo-app",
+    "build:orm": "npm run build --workspace=packages/light-orm",
+    "dev:todo": "npm run dev --workspace=apps/todo-app",
+    "typecheck": "npm run typecheck --workspace=packages/light-orm && npm run typecheck --workspace=apps/todo-app",
+    "db:migrate": "npm run db:migrate --workspace=apps/todo-app"
+  },
+  "devDependencies": {
+    "typescript": "^5.6.3"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
