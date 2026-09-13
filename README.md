@@ -70,8 +70,7 @@ Then open **http://localhost:3000**. The frontend is a single static page
 (vanilla HTML/CSS/JS, no build step) served by the same Express process that
 exposes the JSON API under `/api`.
 
-**Live demo:** _add your deployed URL here after following the deployment
-steps below_.
+**Live demo:**(https://orm-assignment.onrender.com/)
 
 ### API reference (todo-app)
 
@@ -183,8 +182,17 @@ definitions.
 
 ## AI tool disclosure
 
-_[Fill in: which AI tools you used, for which parts, and how you verified/understood the generated code — the assignment explicitly asks you to be able to explain all of it in the live interview.]_
+I used Claude (Anthropic) as a pair-programming assistant throughout this assignment, primarily for:
+
+Scaffolding the monorepo structure — workspace configuration, tsconfig setup, and the initial package.json files for both packages/light-orm and apps/todo-app.
+Designing and implementing the type-inference layer in schema.ts — in particular, working out how to keep column flags (optional, hasDefault, primaryKey) as literal types rather than widened boolean, which is what makes InferInsert correctly compute required vs. optional fields per model. This was iterated on: an early version compiled but silently produced the wrong types (every field looked required), caught by writing @ts-expect-error sanity checks against the client and fixing the generics until those checks actually passed.
+Writing the query builder and SQL generation (query-builder.ts, migrate.ts) — parameterized query construction, the where operator set, and the schema-to-DDL generator.
+Debugging real, live issues during setup and deployment — an npm registry 2FA/publish-access error, an npm-workspaces build-ordering issue on Render (local workspace packages take precedence over published registry versions, so the ORM's dist/ had to be built before the Todo app's), and a git repository-root mixup during the initial push.
+Writing the frontend (public/index.html, style.css, app.js) and the Express routes in apps/todo-app.
+Drafting this README and ARCHITECTURE.md, including the query-flow diagram and the "what I'd add next" section.
+
+What I did myself: reviewed every generated file, ran the build/typecheck/ migration/API tests personally against a live Postgres instance to confirm each piece actually worked (not just that it compiled), made the actual npm-publish and Render-deployment decisions and account setup, and pushed to GitHub. I can walk through the type system, the query flow, and the transaction implementation in detail, and can add a new model live.
 
 ## Time spent
 
-_[Fill in actual hours/days spent.]_
+2 Days
